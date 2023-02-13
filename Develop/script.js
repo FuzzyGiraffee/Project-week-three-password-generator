@@ -1,9 +1,6 @@
 // Assignment code here
-// psudo-random number generator
 
-//TODO: 1) store character selection types selected during dialog box sequence 
-//      2) referece stored values in character randomization algorithm to selectivly add characters
-//      3)
+// psudo-random number generator    
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
   return num;
@@ -16,66 +13,70 @@ function generatePassword(){
   // valiate char length
   if (passwordLength < 8) {
     alert("Error password must be 8 to 128 characters")
+
   }else if( passwordLength > 128){
     alert("Error password must be 8 to 128 characters")
-  // Prompts for character types and stores as boolean
   }
-  var passwordSpecial = confirm("Include special characters?");
+
+  // Prompts for character types and stores as boolean
   var passwordLower = confirm("Include lowercase letters?");
   var passwordUpper = confirm("include uppercase letters?");
+  var passwordSpecial = confirm("Include special characters?");
   var passwordNum = confirm("Include numbers?");
   // Validate at lesat one character type was selected
   if (!passwordSpecial && !passwordLower && !passwordUpper && !passwordNum) {
     alert("Error at least one character type must be selected");
   };
   // Create arrays contiaing characters
-    var lowerCase = "abcdefghifjklmnopqrstuvwxyz",
-    uppercase = "ABCDEFGHIJKLMNOPQRTSTUVWXYZ",
-    special = "!#~$5^&*()",
-    num = "123457890";
+    var lowerCase = "abcdefghijklmnopqrstuvwxyz",
+    uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    special = "!#$%&'()*+,-./:;<=>?@[^_`{|}~",
+    num = "1234567890";
 
    //create array named password 
-   var password = [];
-  //  // take password lenght output -> run random that number of times ->  randomly choose be
-  //  create new variable that assigned a number to each
+   var password;
 
-  //create if else and elseif statements to select password special, password lower, passwordupper and passwordnum.
-    //once selected use random funciton to select random character in each array and sequentiall asign to location in desired password output
-
+  characterSelectorLetter = random(0,lowerCase.length-1);
+  characterSelectorSpecial = random(0,uppercase.length-1);
+  characterSelectorNum = random(0,num.length-1)
 
   //begin character randomization
     for (var i = 0; i < passwordLength; i++){
+      while (password.length < passwordLength){
+      //generate random numbers within set range to randomly set from relevant string
       characterTypeSelector = random(0,3);
-      letterSelector = random(0,25);
+    
+      console.log (characterTypeSelector)
         //Character insertion procedure
-        if (characterTypeSelector == 0) {
-          var addLetterLower = lowerCase[letterSelector]
+        while (password.length < passwordLength )
+        if (characterTypeSelector == 0 && passwordLower == true) {
+          var addLetterLower = lowerCase[characterSelectorLetter]
           console.log (addLetterLower)
           password.push(addLetterLower);
           console.log(password)
-
-        }else if (characterTypeSelector == 1){
-          var addLetterUpper = uppercase[letterSelector]
+          
+        }else if (characterTypeSelector == 1 && passwordUpper == true){
+          var addLetterUpper = uppercase[characterSelectorLetter]
           console.log (addLetterUpper)
           password.push(addLetterUpper);
           console.log(password)
 
-        }else if (characterTypeSelector == 2){
-          var addLetterSpecial = special[letterSelector]
+        }else if (characterTypeSelector == 2 && passwordSpecial == true){
+          var addLetterSpecial = special[characterSelectorSpecial]
           console.log (addLetterSpecial)
           password.push(addLetterSpecial);
           console.log(password)
           
-        }else {
-          var addLetterNum = num[letterSelector]
-          console.log (addLetterNum)
+        }else if (characterTypeSelector == 3 && passwordNum == true){
+          var addLetterNum = num[characterSelectorNum];
+          console.log (addLetterNum);
           password.push(addLetterNum);
-          console.log(password)
-          
+          console.log(password);
+        }
+      }
     }
+    return password;
   }
-}
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
