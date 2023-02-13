@@ -34,44 +34,50 @@ function generatePassword(){
     num = "1234567890";
 
    //create array named password 
-   var password;
+   var password = []; 
 
-  characterSelectorLetter = random(0,lowerCase.length-1);
-  characterSelectorSpecial = random(0,uppercase.length-1);
-  characterSelectorNum = random(0,num.length-1)
+ 
 
   //begin character randomization
     for (var i = 0; i < passwordLength; i++){
-      while (password.length < passwordLength){
+      
       //generate random numbers within set range to randomly set from relevant string
+      //generate character to insert
       characterTypeSelector = random(0,3);
-    
-      console.log (characterTypeSelector)
+        
         //Character insertion procedure
-        while (password.length < passwordLength )
-        if (characterTypeSelector == 0 && passwordLower == true) {
-          var addLetterLower = lowerCase[characterSelectorLetter]
-          console.log (addLetterLower)
-          password.push(addLetterLower);
-          console.log(password)
+        while (password.length < passwordLength ){
+        
+          console.log (characterTypeSelector)
+          characterSelectorLetterLower = random(0,lowerCase.length);
+          characterSelectorLetterUpper = random(0,uppercase.length);
+          characterSelectorSpecial = random(0,special.length);
+          characterSelectorNum = random(0,num.length)
+          while (password.length < passwordLength){
+           if (characterTypeSelector == 0 && passwordLower == true) {
+            var addLetterLower = lowerCase[characterSelectorLetterLower]
+            console.log (addLetterLower)
+            password.push(addLetterLower);
+            console.log(password)
           
-        }else if (characterTypeSelector == 1 && passwordUpper == true){
-          var addLetterUpper = uppercase[characterSelectorLetter]
-          console.log (addLetterUpper)
-          password.push(addLetterUpper);
-          console.log(password)
+          }else if (characterTypeSelector == 1 && passwordUpper == true){
+            var addLetterUpper = uppercase[characterSelectorLetterUpper]
+            console.log (addLetterUpper)
+            password.push(addLetterUpper);
+            console.log(password)
 
-        }else if (characterTypeSelector == 2 && passwordSpecial == true){
-          var addLetterSpecial = special[characterSelectorSpecial]
-          console.log (addLetterSpecial)
-          password.push(addLetterSpecial);
-          console.log(password)
-          
-        }else if (characterTypeSelector == 3 && passwordNum == true){
-          var addLetterNum = num[characterSelectorNum];
-          console.log (addLetterNum);
-          password.push(addLetterNum);
-          console.log(password);
+          }else if (characterTypeSelector == 2 && passwordSpecial == true){
+            var addLetterSpecial = special[characterSelectorSpecial]
+            console.log (addLetterSpecial)
+            password.push(addLetterSpecial);
+            console.log(password)
+            
+          }else if (characterTypeSelector == 3 && passwordNum == true){
+            var addLetterNum = num[characterSelectorNum];
+            console.log (addLetterNum);
+            password.push(addLetterNum)
+            console.log(password);
+        }
         }
       }
     }
