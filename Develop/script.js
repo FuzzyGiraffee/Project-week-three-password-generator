@@ -36,43 +36,39 @@ function generatePassword(){
    //create array named password 
    var password = []; 
 
- 
-
   //begin character randomization
     for (var i = 0; i < passwordLength; i++){
       
       //generate random numbers within set range to randomly set from relevant string
       //generate character to insert
-      characterTypeSelector = random(0,3);
         
         //Character insertion procedure
-        while (password.length < passwordLength ){
-        
-          console.log (characterTypeSelector)
-          characterSelectorLetterLower = random(0,lowerCase.length);
-          characterSelectorLetterUpper = random(0,uppercase.length);
-          characterSelectorSpecial = random(0,special.length);
-          characterSelectorNum = random(0,num.length)
-          while (password.length < passwordLength){
-           if (characterTypeSelector == 0 && passwordLower == true) {
+          var characterTypeSelector = random(0,3)
+          {
+           if (characterTypeSelector === 0 && passwordLower === true) {
+            characterSelectorLetterLower = random(0,lowerCase.length);
             var addLetterLower = lowerCase[characterSelectorLetterLower]
             console.log (addLetterLower)
             password.push(addLetterLower);
             console.log(password)
           
-          }else if (characterTypeSelector == 1 && passwordUpper == true){
+          }else if (characterTypeSelector === 1 && passwordUpper === true){
+            characterSelectorLetterUpper = random(0,uppercase.length);
             var addLetterUpper = uppercase[characterSelectorLetterUpper]
             console.log (addLetterUpper)
             password.push(addLetterUpper);
             console.log(password)
 
-          }else if (characterTypeSelector == 2 && passwordSpecial == true){
+          }else if (characterTypeSelector === 2 && passwordSpecial === true){
+            characterSelectorSpecial = random(0,special.length);
             var addLetterSpecial = special[characterSelectorSpecial]
             console.log (addLetterSpecial)
             password.push(addLetterSpecial);
             console.log(password)
             
-          }else if (characterTypeSelector == 3 && passwordNum == true){
+          }else if (characterTypeSelector === 3 && passwordNum === true){
+            characterSelectorNum = random(0,num.length);
+            characterSelectorNum = random(0,num.length)
             var addLetterNum = num[characterSelectorNum];
             console.log (addLetterNum);
             password.push(addLetterNum)
@@ -80,8 +76,7 @@ function generatePassword(){
         }
         }
       }
-    }
-    return password;
+    
   }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
